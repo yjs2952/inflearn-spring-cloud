@@ -1,9 +1,11 @@
 server:
-  port: 9001
+  port: 0 # 0 랜덤 포트를 사용하겠다는 의미
 spring:
   application:
     name: user-service
 eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}  # 포트번호를 0으로 하면 인스턴스 식별이 안되기 때문에 랜덤 포트번호로 식별할 수 있도록 instance-id 설정
   client:
     register-with-eureka: true
     fetch-registry: true
