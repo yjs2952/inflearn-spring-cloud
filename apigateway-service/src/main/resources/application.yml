@@ -17,14 +17,16 @@ spring:
           predicates: # 조건절이라 생각하면 된다.
             - Path=/first-service/**  # 이 요청이 들어오면 무조건 (uri: http://localhost:8081/) 로 보내겠다.
           filters:
-            - AddRequestHeader=first-request, first-request-header2
-            - AddResponseHeader=first-response, first-response-header2
+#            - AddRequestHeader=first-request, first-request-header2
+#            - AddResponseHeader=first-response, first-response-header2
+            - CustomFilter
         - id: second-service
           uri: http://localhost:8082/
           predicates: # 조건절이라 생각하면 된다.
             - Path=/second-service/**  # 이 요청이 들어오면 무조건 (uri: http://localhost:8082/) 로 보내겠다.
           filters:
-            - AddRequestHeader=second-request, second-request-header2
-            - AddResponseHeader=second-response, second-response-header2
+#            - AddRequestHeader=second-request, second-request-header2
+#            - AddResponseHeader=second-response, second-response-header2
+            - CustomFilter
 
 # 비동기식으로 netty가 실행된다.
