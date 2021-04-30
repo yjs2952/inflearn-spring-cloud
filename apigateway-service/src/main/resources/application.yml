@@ -2,8 +2,8 @@ server:
   port: 8000
 eureka:
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
       default-zone: http://localhost:8761/eureka
 spring:
@@ -19,7 +19,7 @@ spring:
             postLogger: true
       routes:
         - id: first-service
-          uri: http://localhost:8081/
+          uri: lb://MY-FIRST-SERVICE
           predicates: # 조건절이라 생각하면 된다.
             - Path=/first-service/**  # 이 요청이 들어오면 무조건 (uri: http://localhost:8081/) 로 보내겠다.
           filters:
@@ -27,7 +27,7 @@ spring:
 #            - AddResponseHeader=first-response, first-response-header2
             - CustomFilter
         - id: second-service
-          uri: http://localhost:8082/
+          uri: lb://MY-SECOND-SERVICE
           predicates: # 조건절이라 생각하면 된다.
             - Path=/second-service/**  # 이 요청이 들어오면 무조건 (uri: http://localhost:8082/) 로 보내겠다.
           filters:
