@@ -1,5 +1,7 @@
 package com.example.catalogservice.vo;
 
+import lombok.Data;
+
 import java.time.LocalDateTime;
 
 @Data

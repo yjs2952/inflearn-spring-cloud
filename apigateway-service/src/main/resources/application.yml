@@ -24,6 +24,10 @@ spring:
           uri: lb://USER-SERVICE
           predicates: # 조건절이라 생각하면 된다.
             - Path=/user-service/**  # 이 요청이 들어오면 무조건 (uri: http://localhost:8082/) 로 보내겠다.
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
+          predicates: # 조건절이라 생각하면 된다.
+            - Path=/catalog-service/**  # 이 요청이 들어오면 무조건 (uri: http://localhost:8082/) 로 보내겠다.
         - id: first-service
           uri: lb://MY-FIRST-SERVICE
           predicates: # 조건절이라 생각하면 된다.

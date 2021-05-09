@@ -1,8 +1,8 @@
 server:
-  port: 0 # 0 ·£´ı Æ÷Æ®¸¦ »ç¿ëÇÏ°Ú´Ù´Â ÀÇ¹Ì
+  port: 0 # 0 ëœë¤ í¬íŠ¸ë¥¼ ì‚¬ìš©í•˜ê² ë‹¤ëŠ” ì˜ë¯¸
 spring:
   application:
-    name: catalg-service
+    name: catalog-service
   h2:
     console:
       enabled: true
@@ -19,7 +19,7 @@ spring:
     url: jdbc:h2:mem:testdb
 eureka:
   instance:
-    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}  # Æ÷Æ®¹øÈ£¸¦ 0À¸·Î ÇÏ¸é ÀÎ½ºÅÏ½º ½Äº°ÀÌ ¾ÈµÇ±â ¶§¹®¿¡ ·£´ı Æ÷Æ®¹øÈ£·Î ½Äº°ÇÒ ¼ö ÀÖµµ·Ï instance-id ¼³Á¤ ¾È±×·³ ¼­¹ö¿¡¼­ ½Äº°¸øÇÔ
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}  # í¬íŠ¸ë²ˆí˜¸ë¥¼ 0ìœ¼ë¡œ í•˜ë©´ ì¸ìŠ¤í„´ìŠ¤ ì‹ë³„ì´ ì•ˆë˜ê¸° ë•Œë¬¸ì— ëœë¤ í¬íŠ¸ë²ˆí˜¸ë¡œ ì‹ë³„í•  ìˆ˜ ìˆë„ë¡ instance-id ì„¤ì • ì•ˆê·¸ëŸ¼ ì„œë²„ì—ì„œ ì‹ë³„ëª»í•¨
     hostname: localhost
     lease-renewal-interval-in-seconds: 1
     lease-expiration-duration-in-seconds: 2

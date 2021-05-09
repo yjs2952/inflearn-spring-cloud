@@ -1,5 +1,7 @@
 package com.example.catalogservice.dto;
 
+import lombok.Data;
+
 @Data
 public class CatalogDto {
     private String productId;
