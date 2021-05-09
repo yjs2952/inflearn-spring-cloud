@@ -1,0 +1,35 @@
+server:
+  port: 0 # 0 랜덤 포트를 사용하겠다는 의미
+spring:
+  application:
+    name: catalg-service
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    generate-ddl: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}  # 포트번호를 0으로 하면 인스턴스 식별이 안되기 때문에 랜덤 포트번호로 식별할 수 있도록 instance-id 설정 안그럼 서버에서 식별못함
+    hostname: localhost
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+logging:
+  level:
+    com.example.catalogservice: debug
+greeting:
+  message: Welcome to the simple E-commerce.
