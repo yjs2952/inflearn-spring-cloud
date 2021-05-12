@@ -24,10 +24,34 @@ spring:
           uri: lb://ORDER-SERVICE
           predicates: # 조건절이라 생각하면 된다.
             - Path=/order-service/**  # 이 요청이 들어오면 무조건 (uri: http://localhost:8082/) 로 보내겠다.
+#        - id: user-service
+#          uri: lb://USER-SERVICE
+#          predicates: # 조건절이라 생각하면 된다.
+#            - Path=/user-service/**  # 이 요청이 들어오면 무조건 (uri: http://localhost:8082/) 로 보내겠다.
         - id: user-service
           uri: lb://USER-SERVICE
-          predicates: # 조건절이라 생각하면 된다.
-            - Path=/user-service/**  # 이 요청이 들어오면 무조건 (uri: http://localhost:8082/) 로 보내겠다.
+          predicates:
+            - Path=/user-service/login
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/users
+            - Method=POST
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/**
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         - id: catalog-service
           uri: lb://CATALOG-SERVICE
           predicates: # 조건절이라 생각하면 된다.
