@@ -20,7 +20,7 @@ spring:
 eureka:
   instance:
     instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}  # 포트번호를 0으로 하면 인스턴스 식별이 안되기 때문에 랜덤 포트번호로 식별할 수 있도록 instance-id 설정 안그럼 서버에서 식별못함
-    hostname: localhost
+    hostname: ${spring.cloud.client.ip-address}
     lease-renewal-interval-in-seconds: 1
     lease-expiration-duration-in-seconds: 2
   client:

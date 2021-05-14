@@ -6,7 +6,7 @@ spring:
     name: discovery-service
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${spring.cloud.client.ip-address}
   client:
     register-with-eureka: false
     fetch-registry: false

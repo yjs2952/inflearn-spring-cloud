@@ -2,7 +2,8 @@ server:
   port: 8000
 eureka:
   instance:
-    hostname: localhost
+    hostname: ${spring.cloud.client.ip-address}
+#    ip-address: ${spring.cloud.client.ip-address}
   client:
     register-with-eureka: true
     fetch-registry: true
