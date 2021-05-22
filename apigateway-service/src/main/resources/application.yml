@@ -76,4 +76,7 @@ spring:
                 preLogger: true
                 postLogger: true
 
+token:
+  secret: user_token
+
 # 비동기식으로 netty가 실행된다.
