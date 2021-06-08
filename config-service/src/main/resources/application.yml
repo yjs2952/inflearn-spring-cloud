@@ -8,4 +8,7 @@ spring:
     config:
       server:
         git:
-          uri: file://D:\STUDY\repository\inflearn-spring-cloud-part2
+#          uri: file://D:\STUDY\repository\inflearn-spring-cloud-part2
+          uri: https://github.com/yjs2952/spring-cloud-config
+#          username:  # private 인 경우
+#          password:  # private 인 경우
