@@ -18,3 +18,31 @@
 * 애플리케이션 배포 파이프라인을 통해 DEV-UAT-PROD 환경에 맞는 구성 정보 사용
 
 ![spring cloud config](./img/01 spring cloud config.png)
+
+### Spring Cloud Bus
+* 분산 시스템의 노드(Microservice)를 경량 메시지 브로커(RabbitMQ)와 연결
+    + 상태 및 구성에 대한 변경 사항을 연결된 노드에게 전달(Broadcast)
+* AMQP(Advanced Message Queuing Protocol) 메시지 지향 미들웨어를 위한 개방형 표준 응용 계층 프로토콜
+    + 메시지 지향, 큐잉, 라우팅(P2P, Publisher-Subscriber), 신뢰성, 보안
+    + Erlang, RabbitMQ 에서 사용
+* Kafka 프로젝트
+    + Apache Software Foundation 이 Scalar 언어로 개발한 오픈소스 메시지 브로커 프로젝트
+    + 분산형 스트리밍 플랫폼
+    + 대용량의 데이터를 처리 가능한 메시지 시스템
+* RabbitMQ VS Kafka
+    + RabbitMQ  
+        - 메시지 브로커
+        - 초당 20+ 메시지를 소비자에게 전달
+        - 메시지 전달 보장, 시스템 간 메시지 전달
+        - 브로커, 소비자 중심
+    + Kafka
+        - 초당 100k+ 이상의 이벤트 처리
+        - Pub/Sub, Topic 에 메시지 전달
+        - Ack 를 기다리지 않고 전달 가능
+        - 생산자 중심
+    
+![Kafka VS RabbitMQ](./img/02%20spring%20cloud%20bus%20kafka%20vs%20rabbitmq.png)
+
+### Actuator bus-refresh Endpoint
+* 분산 시스템의 노드를 경량 메시지 브로커와 연결
+* 상태 및 구성에 대한 변경 사항을 연결된 노드에게 전달(Broadcast)
