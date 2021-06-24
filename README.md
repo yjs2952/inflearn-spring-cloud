@@ -43,6 +43,11 @@
     
 ![Kafka VS RabbitMQ](./img/02%20spring%20cloud%20bus%20kafka%20vs%20rabbitmq.png)
 
+* rabbitmq 설치
+    + brew install rabbitmq
+    + export PATH=$PATH:/usr/local/sbin
+    + rabbitmq-server
+
 ### Actuator bus-refresh Endpoint
 * 분산 시스템의 노드를 경량 메시지 브로커와 연결
 * 상태 및 구성에 대한 변경 사항을 연결된 노드에게 전달(Broadcast)
