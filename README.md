@@ -1,3 +1,12 @@
+### Spring Cloud Netflix Eureka
+* 모든 마이크로스 서비스는 Spring Cloud Netflix Eureka 에 등록한다.   
+* Service Discovery 
+    - 외부에서 다른 서비스들이 마이크로 서비스를 검색하기 위해서 사용하는 개념 (전화번호부 같은 역할)
+    - Eureka 가 하는 역할
+* 각 마이크로 서비스가 자신의 위치 정보를 Eureka 서버에 등록해서 사용한다.
+    - 클라이언트는 자신이 필요한 요청 정보를 API Gateway 에 전달한다.
+    - 요청 정보는 Service Discovery 에 전달이 되어 필요한 마이크로 서비스의 위치 정보(ip address, port 등)를 반환한다.
+
 ### port 번호 변경하는 방법
 1. Edit Configurations -> VM Option -> -Dserver.port=9001
 2. 터미널에서 mvn (또는 프로젝트 루트 경로에서 ./mvnw) spring-boot:run -Dspring-boot-run.jvmArguments='-Dserver.port=9001'
@@ -46,3 +55,12 @@
 ### Actuator bus-refresh Endpoint
 * 분산 시스템의 노드를 경량 메시지 브로커와 연결
 * 상태 및 구성에 대한 변경 사항을 연결된 노드에게 전달(Broadcast)
+
+### RabbitMQ 설치 - Windows 10
+1. Erlang 설치
+    + https://www.erlang.org/downloads/23.1
+    + 설치 후 환경변수 등록
+        - C:\Program Files\erl-23.1
+2. RabbitMQ 설치
+    + https://www.rabbitmq.com/download.html
+    + 
