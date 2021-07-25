@@ -31,6 +31,13 @@
 ### Netflix Zuul 
 * Routing, Api Gateway 역할
 * Spring Boot 2.4 버전에서 maintenance 상태
+    - zuul 2.0 으로 업데이트 되면서 비동기를 지원하긴 하지만    
+      다른 Spring Boot 라이브러리와의 호환성 문제로 Spring Cloud Gateway 로 대체
+      
+### Spring Cloud Gateway 
+#### Filter
+
+![spring cloud Gateway Filter](./img/03 spring cloud gateway filter.png)
 
 ### port 번호 변경하는 방법
 1. Edit Configurations -> VM Option -> -Dserver.port=9001
