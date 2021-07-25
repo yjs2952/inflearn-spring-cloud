@@ -7,6 +7,31 @@
     - 클라이언트는 자신이 필요한 요청 정보를 API Gateway 에 전달한다.
     - 요청 정보는 Service Discovery 에 전달이 되어 필요한 마이크로 서비스의 위치 정보(ip address, port 등)를 반환한다.
 
+### API Gateway Service
+* 인증 및 권한 부여
+* 마이크로 서비스 검색 통합
+* 응답 캐싱
+* 정책, 회로 차단기 및 QoS 다시 시도
+* 속도 제한
+* 부하 분산
+* 로깅, 추적, 상관 관계
+* 헤더, 쿼리 문자열 및 청구 변환
+* IP 허용 목록에 추가
+
+### Netflix Ribbon
+* Spring Cloud 에서의 MSA 간의 통신
+    1. RestTemplate
+    2. Feign Client
+* Ribbon: **Client side** Load Balancer
+    - 서비스 이름으로 호출
+    - Health Check
+    - 비동기 지원이 안됨
+    - Spring Boot 2.4 버전에서 maintenance 상태
+
+### Netflix Zuul 
+* Routing, Api Gateway 역할
+* Spring Boot 2.4 버전에서 maintenance 상태
+
 ### port 번호 변경하는 방법
 1. Edit Configurations -> VM Option -> -Dserver.port=9001
 2. 터미널에서 mvn (또는 프로젝트 루트 경로에서 ./mvnw) spring-boot:run -Dspring-boot-run.jvmArguments='-Dserver.port=9001'
