@@ -60,6 +60,10 @@
 
 ![spring cloud config](./img/01 spring cloud config.png)
 
+* 각 마이크로 서비스에서 설정정보 가져올 시
+    - bootstrap.xml 을 설정하면 application.xml 보다 높은 우선순위로 설정값을 가져올 수 있다.
+        + 단 spring-cloud-starter-bootstrap 의존성이 있어야 한다.
+
 ### Spring Cloud Bus
 * 분산 시스템의 노드(Microservice)를 경량 메시지 브로커(RabbitMQ)와 연결
     + 상태 및 구성에 대한 변경 사항을 연결된 노드에게 전달(Broadcast)

@@ -1,7 +1,8 @@
+# bootstrap.xml 이 존재하면 application.xml 보다 우선순위가 높아 먼저 외부 config server 로 부터 프로퍼티 값을 가져온다
 spring:
   cloud:
     config:
-      uri: http://127.0.0.1:8888
+      uri: http://127.0.0.1:8888  # config server uri
       name: ecommerce         # 따로 저장한 ecommerce.yml
   profiles:
-    active: local
+    active: dev
