@@ -63,12 +63,14 @@
 * 각 마이크로 서비스에서 설정정보 가져올 시
     - bootstrap.xml 을 설정하면 application.xml 보다 높은 우선순위로 설정값을 가져올 수 있다.
         + 단 spring-cloud-starter-bootstrap 의존성이 있어야 한다.
+    - profile 을 native 로 설정할 시 native 로 설정한 경로에서 정보를 가져오고    
+      profile 설정이 없는 경우 github 경로가 설정되어 있다면 native 경로를 무시한다
 
 ### Spring Cloud Bus
 * 분산 시스템의 노드(Microservice)를 경량 메시지 브로커(RabbitMQ)와 연결
     + 상태 및 구성에 대한 변경 사항을 연결된 노드에게 전달(Broadcast)
 * AMQP(Advanced Message Queuing Protocol) 메시지 지향 미들웨어를 위한 개방형 표준 응용 계층 프로토콜
-    + 메시지 지향, 큐잉, 라우팅(P2P, Publisher-Subscriber), 신뢰성, 보안
+    + 메시지 지향, 큐잉, 라우팅(P2P, Publisher-Subscriber), 신뢰성, 보안 
     + Erlang, RabbitMQ 에서 사용
 * Kafka 프로젝트
     + Apache Software Foundation 이 Scalar 언어로 개발한 오픈소스 메시지 브로커 프로젝트
@@ -104,4 +106,20 @@
         - C:\Program Files\erl-23.1
 2. RabbitMQ 설치
     + https://www.rabbitmq.com/download.html
-    + 
+
+### Encryption types
+* Symmetric Encryption (shared)
+    - Using the same key
+* Asymmetric Encryption (RSA Keypair)
+    - Private and Public Key
+    - Using Java keytool
+
+### Java Cryptography Extension (JCE)
+* JCE 설치
+    - https://www.oracle.com/java/technologies/javase-jce-all-downloads.html
+    - security 폴더에 복사
+* Windows
+    - Oracle JDK : {user.home}\Program Files\Java\jdk-13.0.2\conf\security
+* MacOS
+    - Oracle JDK : {user.home}/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/jre/lib/security
+    - Open JDK : {user.home}/Library/Java/JavaVirtualMachines/openjdk-14.0.2/Contents/Home/conf/security
