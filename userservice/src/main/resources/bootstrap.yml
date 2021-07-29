@@ -3,6 +3,6 @@ spring:
   cloud:
     config:
       uri: http://127.0.0.1:8888  # config server uri
-      name: ecommerce         # 따로 저장한 ecommerce.yml
-  profiles:
-    active: dev
+      name: USER-SERVICE         # 따로 저장한 YAML 파일명
+#  profiles:
+#    active: native
