@@ -15,8 +15,8 @@ spring:
     config:
       server:
         native:
-#          search-locations: file://D:\STUDY\repository\inflearn-spring-cloud-part3
-          search-locations: file://${user.home}/Desktop/dev/workspace/spring-cloud-config
+          search-locations: file:///D:\STUDY\repository\inflearn-spring-cloud-part3
+#          search-locations: file://${user.home}/Desktop/dev/workspace/spring-cloud-config
         git:
 #          uri: file://D:\STUDY\repository\inflearn-spring-cloud-part2
           uri: https://github.com/yjs2952/spring-cloud-config

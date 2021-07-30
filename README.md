@@ -123,3 +123,10 @@
 * MacOS
     - Oracle JDK : {user.home}/Library/Java/JavaVirtualMachines/jdk1.8.0_191.jdk/Contents/Home/jre/lib/security
     - Open JDK : {user.home}/Library/Java/JavaVirtualMachines/openjdk-14.0.2/Contents/Home/conf/security
+
+### 비대칭 키를 이용한 암호화
+* keytool 시용
+    - private key 생성 : keytool -genkeypair -alias apiEncryptionKey -keyalg RSA -dname "CN=Jason Yoon, OU=API Development, O=joneconsulting.co.kr, L=Seoul, C=KR" -keypass "test1234" -keystore apiEncryptionKey.jks -storepass "test1234"
+    - private key 에서 인증서 추출 : keytool -export -alias apiEncryptionKey -keystore apiEncryptionKey.jks -rfc -file trustServer.cer
+    - 인증서로 public key 생성 : keytool -import -alias trustServer -file trustServer.cer -keystore publicKey.jks
+    - key 정보 보기 : keytool -list -keystore apiEncryptionKey.jks -v
