@@ -130,3 +130,11 @@
     - private key 에서 인증서 추출 : keytool -export -alias apiEncryptionKey -keystore apiEncryptionKey.jks -rfc -file trustServer.cer
     - 인증서로 public key 생성 : keytool -import -alias trustServer -file trustServer.cer -keystore publicKey.jks
     - key 정보 보기 : keytool -list -keystore apiEncryptionKey.jks -v
+
+### Apache Kafka
+* Apache Software Foundation 의 Scalar 언어로 된 오픈 소스 메시지 브로커 프로젝트
+    - Open Source Message Broker Project
+* 링크드인(Linked-in)에서 개발, 2011년 오픈 소스화
+    - 2014년 11월 링크드인에서 kafka 를 개발하던 엔지니어들이 kafka 개발에 집중하기 위해 confluent 라는 회사 창립
+* 실시간 데이터 피드를 관리하기 위해 통일된 높은 처리량, 낮은 지연 시간을 지닌 플랫폼 제공
+* Apple, Netflix, Shopify, Yelp, Kakao, New York Times, Cisco, Ebay, Paypal, Hyperledger Fabric, Uber, Salesforce.com 등이 사용
