@@ -36,8 +36,10 @@
       
 ### Spring Cloud Gateway 
 #### Filter
-
 ![spring cloud Gateway Filter](./img/03 spring cloud gateway filter.png)
+
+### Eureka 연동
+![spring cloud Gateway Filter](./img/04%20spring%20cloud%20gateway%20-%20Eureka.png)
 
 ### port 번호 변경하는 방법
 1. Edit Configurations -> VM Option -> -Dserver.port=9001
@@ -138,3 +140,27 @@
     - 2014년 11월 링크드인에서 kafka 를 개발하던 엔지니어들이 kafka 개발에 집중하기 위해 confluent 라는 회사 창립
 * 실시간 데이터 피드를 관리하기 위해 통일된 높은 처리량, 낮은 지연 시간을 지닌 플랫폼 제공
 * Apple, Netflix, Shopify, Yelp, Kakao, New York Times, Cisco, Ebay, Paypal, Hyperledger Fabric, Uber, Salesforce.com 등이 사용
+
+#### 카프카 사용 전
+![Apache kafka 사용 전](./img/05%20Apache%20kafka%20사용%20전.png)
+#### 카프카 탄생 배경
+* 모든 시스템으로 데이터를 실시간으로 전송하여 처리할 수 있는 시스템 필요
+* 데이터가 많아지더라도 확장이 용이한 시스템 필요
+
+#### 카프카 데이터 처리 흐름
+![Apache kafka 데이터 처리 흐름](./img/06%20Apache%20kafka%20데이터%20처리%20흐름.png)
+
+#### Kafka Broker
+* 실행 된 kafka 애플리케이션 서버
+* 3대 이상의 broker cluster 구성
+* zookeeper 연동
+    - 역할: 메타데이터(Broker ID, Controller ID 등) 저장
+    - Controller 정보 저장
+      ![Apache kafka 데이터 처리 흐름](./img/07%20Apache%20kafka%20-%20zookeeper.png)
+    - Broker 들을 중재
+* n개 Broker 중 1대는 Controller 기능 수행
+    - Controller 역할
+        + 각 Broker 에게 담당 파티션 할당 수행
+        + Broker 정상 동작 모니터링 관리
+
+    
