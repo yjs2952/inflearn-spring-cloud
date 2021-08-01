@@ -36,7 +36,7 @@
       
 ### Spring Cloud Gateway 
 #### Filter
-![spring cloud Gateway Filter](./img/03 spring cloud gateway filter.png)
+![spring cloud Gateway Filter](./img/03%20spring%20cloud%20gateway%20filter.png)
 
 ### Eureka 연동
 ![spring cloud Gateway Filter](./img/04%20spring%20cloud%20gateway%20-%20Eureka.png)
@@ -60,7 +60,7 @@
 * 각 서비스를 다시 빌드하지 않고, 바로 적응 가능
 * 애플리케이션 배포 파이프라인을 통해 DEV-UAT-PROD 환경에 맞는 구성 정보 사용
 
-![spring cloud config](./img/01 spring cloud config.png)
+![spring cloud config](./img/01%20spring%20cloud%20config.png)
 
 * 각 마이크로 서비스에서 설정정보 가져올 시
     - bootstrap.xml 을 설정하면 application.xml 보다 높은 우선순위로 설정값을 가져올 수 있다.
