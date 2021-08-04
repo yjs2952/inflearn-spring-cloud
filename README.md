@@ -133,6 +133,14 @@
     - 인증서로 public key 생성 : keytool -import -alias trustServer -file trustServer.cer -keystore publicKey.jks
     - key 정보 보기 : keytool -list -keystore apiEncryptionKey.jks -v
 
+### Feign Web Service Client
+* FeignClient -> HTTP Client
+    - REST Call 을 추상화 한 Spring Cloud Netflix 라이브러리
+* 사용방법
+    - 호출하려는 HTTP Endpoint 에 대한 interface 를 생성
+    - @FeignClient 선언
+* Load balanced 지원
+
 ### Apache Kafka
 * Apache Software Foundation 의 Scalar 언어로 된 오픈 소스 메시지 브로커 프로젝트
     - Open Source Message Broker Project
