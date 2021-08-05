@@ -170,5 +170,25 @@
     - Controller 역할
         + 각 Broker 에게 담당 파티션 할당 수행
         + Broker 정상 동작 모니터링 관리
-
     
+#### Kafka 서버 기동
+* Zookeeper 및 Kafka 서버 구동
+    - zookeeper 
+        + 실행 : $KAFKA_HOME/bin/zookeeper-server-start.sh
+        + config : $KAFKA_HOME/config/zookeeper.properties
+    - kafka
+        + 실행 : $KAFKA_HOME/bin/kafka-server-start.sh
+        + config : $KAFKA_HOME/config/server.properties
+
+#### Topic 생성
+* $KAFKA_HOME/bin/kafka-topics.sh --create --topic quickstart-events --bootstrap-server localhost:9092 --partitions 1
+
+#### Topic 목록 확인
+* $KAFKA_HOME/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
+
+#### Topic 정보 확인
+* $KAFKA_HOME/bin/kafka-topics.sh --describe --topic quickstart-events --bootstrap-server localhost:9092
+
+#### Windows 에서 기동
+* 모든 명령어는 $KAFKA_HOME\bin\windows 폴더에 저장
+* .\bin\windows\zookeeper-server-start.bat  .\config\zookeeper.properties
