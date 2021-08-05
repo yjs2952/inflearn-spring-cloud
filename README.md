@@ -192,3 +192,10 @@
 #### Windows 에서 기동
 * 모든 명령어는 $KAFKA_HOME\bin\windows 폴더에 저장
 * .\bin\windows\zookeeper-server-start.bat  .\config\zookeeper.properties
+
+#### Kafka Producer/Consumer 테스트
+* 메시지 생산
+    - $KAFKA_HOME/bin/kafka-console-producer.sh --broker-list localhost:9092 *[어디에 보낼 것인지 {브로커의 주소}]* --topic quickstart-events *[토픽]*
+* 메시지 소비
+    - $KAFKA_HOME/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 *[어디서 받을 것인지 {서버의 주소}]* --topic quickstart-events --from-beginning *[처음부터 받아와라]*
+    
