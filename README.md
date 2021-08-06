@@ -198,4 +198,11 @@
     - $KAFKA_HOME/bin/kafka-console-producer.sh --broker-list localhost:9092 *[어디에 보낼 것인지 {브로커의 주소}]* --topic quickstart-events *[토픽]*
 * 메시지 소비
     - $KAFKA_HOME/bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 *[어디서 받을 것인지 {서버의 주소}]* --topic quickstart-events --from-beginning *[처음부터 받아와라]*
-    
+
+#### Kafka Connect
+* Kafka Connect 를 통해 Data 를 Import/Export 가능
+* 코드없이 Configuration 으로 데이터를 이동
+* Standalone mode, Distribution mode 지원
+    - RESTful API 통해 지원
+    - Stream 또는 Batch 형태로 데이터 전송 가능
+    - 커스텀 Connector 를 통한 다양한 Plugin 제공 (File, S3, Hive, Mysql, etc....)
