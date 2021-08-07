@@ -206,3 +206,52 @@
     - RESTful API 통해 지원
     - Stream 또는 Batch 형태로 데이터 전송 가능
     - 커스텀 Connector 를 통한 다양한 Plugin 제공 (File, S3, Hive, Mysql, etc....)
+
+#### Kafka Connect 설치
+* 다운로드
+  - curl -O http://packages.confluent.io/archive/5.5/confluent-community-5.5.2-2.12.tar.gz
+  - curl -O http://packages.confluent.io/archive/6.1/confluent-community-6.1.0.tar.gz
+* 압축해제 
+  - tar xvf confluent-community-6.1.0.tar.gz
+  - cd  $KAFKA_CONNECT_HOME
+* Kafka Connect 실행
+  - ./bin/connect-distributed ./etc/kafka/connect-distributed.properties
+* JDBC Connector 설치
+  - https://docs.confluent.io/5.5.1/connect/kafka-connect-jdbc/index.html
+  - confluentinc-kafka-connect-jdbc-10.0.1.zip
+* etc/kafka/connect-distributed.properties 파일 마지막에 아래 plugin 정보 추가
+  - plugin.path=[confluentinc-kafka-connect-jdbc-10.0.1 폴더]
+* JdbcSourceConnector에서 MariaDB 사용하기 위해 mariadb 드라이버 복사
+  - ./share/java/kafka/ 폴더에 mariadb-java-client-2.7.2.jar  파일 복사
+* 토픽 삭제 명령어
+    - $KAFKA_HOME/bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic {토픽명}
+    - server.properties 에 ```delete.topic.enable=true``` 추가
+
+#### Kafka Source Connect 테스트
+* Kafka Source Connect 추가 (MariaDB)
+    ```
+    echo '
+    {
+        "name" : "my-source-connect",
+        "config" : {
+            "connector.class" : "io.confluent.connect.jdbc.JdbcSourceConnector",
+            "connection.url":"jdbc:mysql://localhost:3306/mydb",
+            "connection.user":"root",
+            "connection.password":"test1357",
+            "mode": "incrementing",
+            "incrementing.column.name" : "id",
+            "table.whitelist":"users",
+            "topic.prefix" : "my_topic_",
+            "tasks.max" : "1"
+        }
+    }
+    
+    ' | curl -X POST -d @- http://localhost:8083/connectors --header "content-Type:application/json"
+    ```
+
+    - source 목록 조회 
+      + GET - http://localhost:8083/connectors
+    - source 상세 조회
+      + GET - http://localhost:8083/connectors/{source-name}/status
+    - source 삭제
+      + DELETE - http://localhost:8083/connectors/{source-name}
