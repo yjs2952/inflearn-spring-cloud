@@ -224,7 +224,8 @@
 * JdbcSourceConnector에서 MariaDB 사용하기 위해 mariadb 드라이버 복사
   - ./share/java/kafka/ 폴더에 mariadb-java-client-2.7.2.jar  파일 복사
 * 토픽 삭제 명령어
-    - $KAFKA_HOME/bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic {토픽명}
+    - $KAFKA_HOME/bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic [토픽이름]
+    - 또는 $KAFKA_HOME/bin/kafka-topics.sh --delete --topic [토픽이름] --bootstrap-server localhost:9092
     - server.properties 에 ```delete.topic.enable=true``` 추가
 
 #### Kafka Source Connect 테스트
@@ -237,7 +238,7 @@
             "connector.class" : "io.confluent.connect.jdbc.JdbcSourceConnector",
             "connection.url":"jdbc:mysql://localhost:3306/mydb",
             "connection.user":"root",
-            "connection.password":"test1357",
+            "connection.password":"1234",
             "mode": "incrementing",
             "incrementing.column.name" : "id",
             "table.whitelist":"users",
@@ -249,9 +250,38 @@
     ' | curl -X POST -d @- http://localhost:8083/connectors --header "content-Type:application/json"
     ```
 
-    - source 목록 조회 
+#### Kafka Sink Connect 테스트
+* Kafka Sink Connect 추가 (MariaDB)
+    ```
+    {
+        "name":"my-sink-connect",
+        "config":{
+            "connector.class":"io.confluent.connect.jdbc.JdbcSinkConnector",
+            "connection.url":"jdbc:mysql://localhost:3306/mydb",
+            "connection.user":"root",
+            "connection.password":"1234",
+            "auto.create":"true",
+            "auto.evolve":"true",
+            "delete.enabled":"false",
+            "tasks.max":"1",
+            "topics":"my_topic_users"
+        }    
+    }
+  
+    '| curl -X POST -d @- http://localhost:8083/connectors --header "content-Type:application/json"
+    ```
+
+* connect 정보
+    - 목록 조회 
       + GET - http://localhost:8083/connectors
-    - source 상세 조회
-      + GET - http://localhost:8083/connectors/{source-name}/status
-    - source 삭제
-      + DELETE - http://localhost:8083/connectors/{source-name}
+    - 상세 조회
+      + GET - http://localhost:8083/connectors/{connector-name}/status
+    - 삭제
+      + DELETE - http://localhost:8083/connectors/{connector-name}
+
+### 데이터 동기화
+* Order Service 에 요청된 주문의 수량 정보를 Catalogs Service 에 반영
+* Order Service 에서 Kafka Topic 으로 메시지 전송 -> Producer
+* Catalogs Service 에서 Kafka Topic 에 전송된 매시지 취득 -> Consumer
+
+![Apache kafka 데이터 처리 흐름](./img/08%20Apache%20kafka%20-%20데이터%20동기화.png)
