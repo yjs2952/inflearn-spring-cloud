@@ -241,8 +241,8 @@
             "connection.password":"1234",
             "mode": "incrementing",
             "incrementing.column.name" : "id",
-            "table.whitelist":"users",
-            "topic.prefix" : "my_topic_",
+            "table.whitelist":"users",      # 데이터를 가져올 테이블 (변경사항 감지)
+            "topic.prefix" : "my_topic_",   # 여기에 저장 (my_topic_users 이런식으로 토픽 생성)
             "tasks.max" : "1"
         }
     }
@@ -260,7 +260,7 @@
             "connection.url":"jdbc:mysql://localhost:3306/mydb",
             "connection.user":"root",
             "connection.password":"1234",
-            "auto.create":"true",
+            "auto.create":"true",       # 토픽과 같은 이름의 테이블을 생성하겠다
             "auto.evolve":"true",
             "delete.enabled":"false",
             "tasks.max":"1",
