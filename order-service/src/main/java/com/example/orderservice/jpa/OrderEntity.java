@@ -34,5 +34,5 @@ public class OrderEntity {
 
     @ColumnDefault(value = "CURRENT_TIMESTAMP")
     @Column(nullable = false, updatable = false, insertable = false)
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
 }
