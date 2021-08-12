@@ -279,9 +279,15 @@
     - 삭제
       + DELETE - http://localhost:8083/connectors/{connector-name}
 
-### 데이터 동기화
+### 데이터 동기화 1
 * Order Service 에 요청된 주문의 수량 정보를 Catalogs Service 에 반영
 * Order Service 에서 Kafka Topic 으로 메시지 전송 -> Producer
 * Catalogs Service 에서 Kafka Topic 에 전송된 매시지 취득 -> Consumer
 
 ![Apache kafka 데이터 처리 흐름](./img/08%20Apache%20kafka%20-%20데이터%20동기화.png)
+
+### 데이터 동기화 2
+* Order Service 에 요청된 주문 정보를 DB 가 아니라 Kafka Topic 으로 전송
+* Kafka Topic 에 설정된 Kafka Sink Connect 를 사용해 단일 DB 에 저장 -> 데이터 동기화
+
+![여러 인스턴스 kafka connect 를 이용하여 데어터 동기화](./img/09%20Apache%20kafka%20-%20데이터%20동기화%2002.png)
