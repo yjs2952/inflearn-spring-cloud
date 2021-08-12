@@ -18,12 +18,12 @@ public class OrderProducer {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
     private List<Field> fields = Arrays.asList(
-            new Field("String", true, "userId"),
-            new Field("String", true, "productId"),
-            new Field("int32", true, "productId"),
+            new Field("string", true, "order_id"),
+            new Field("string", true, "user_id"),
+            new Field("string", true, "product_id"),
             new Field("int32", true, "qty"),
-            new Field("int32", true, "unitPrice"),
-            new Field("int32", true, "totalPrice")
+            new Field("int32", true, "unit_price"),
+            new Field("int32", true, "total_price")
     );
 
     private Schema schema = Schema.builder()
@@ -36,12 +36,12 @@ public class OrderProducer {
     public OrderDto send(String topic, OrderDto orderDto) {
         Payload payload = Payload
                 .builder()
-                .orderId(orderDto.getOrderId())
-                .userId(orderDto.getUserId())
-                .productId(orderDto.getProductId())
+                .order_id(orderDto.getOrderId())
+                .user_id(orderDto.getUserId())
+                .product_id(orderDto.getProductId())
                 .qty(orderDto.getQty())
-                .unitPrice(orderDto.getUnitPrice())
-                .totalPrice(orderDto.getTotalPrice())
+                .unit_price(orderDto.getUnitPrice())
+                .total_price(orderDto.getTotalPrice())
                 .build();
 
         KafkaOrderDto kafkaOrderDto = new KafkaOrderDto(schema, payload);
