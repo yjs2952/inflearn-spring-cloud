@@ -2,7 +2,7 @@ encrypt:
 #  key: abcdefghijklmnopqrstuvwxyz0123456789
   key-store:
 #    location: file:///D:\STUDY\repository\inflearn-spring-cloud-part3\keystore\apiEncryptionKey.jks
-    location: file:///mnt/d/STUDY/repository/inflearn-spring-cloud-part3/keystore/apiEncryptionKey.jks
-#    location: file://${user.home}/Desktop/dev/workspace/inflearn-spring-cloud-data/keystore/apiEncryptionKey.jks
+#    location: file:///mnt/d/STUDY/repository/inflearn-spring-cloud-part3/keystore/apiEncryptionKey.jks
+    location: file://${user.home}/Desktop/dev/workspace/inflearn-spring-cloud-data/keystore/apiEncryptionKey.jks
     password: test1234
     alias: apiEncryptionKey
