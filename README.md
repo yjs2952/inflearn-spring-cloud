@@ -291,3 +291,25 @@
 * Kafka Topic 에 설정된 Kafka Sink Connect 를 사용해 단일 DB 에 저장 -> 데이터 동기화
 
 ![여러 인스턴스 kafka connect 를 이용하여 데어터 동기화](./img/09%20Apache%20kafka%20-%20데이터%20동기화%2002.png)
+
+### Microservice 분산 추적
+* Zipkin
+  - https://zipkin.io/
+  - Twitter 에서 사용하는 분산환경의 Timing 데이터 수집, 추적 시스템 (오픈소스)
+  - Google Drapper 에서 발전 하였으며, 분산환경에서의 시스템 병목현상 파악
+  - Collector, Query Service, Database WebUI 로 구성
+  - **Span** 
+    + 하나의 요청에 사용되는 작업의 단위
+    + 64 bit unique ID
+  - **Trace**
+    + 트리 구조로 이루어진 Span 셋
+    + 하나의 요청에 대한 같은 Trace ID 발급
+* Spring Cloud Sleuth
+  - 스프링 부트 애플리케이션을 Zipkin 과 연동
+  - 요청 값에 따른 Trace ID, Span ID 부여
+  - Trace 와 Span ID 를 로그에 추가 가능
+    + Servlet Filter
+    + Rest Template
+    + Scheduled Actions
+    + Message Channels
+    + Feign Client
