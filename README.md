@@ -313,3 +313,14 @@
     + Scheduled Actions
     + Message Channels
     + Feign Client
+
+### Prometheus + Grafana
+* Prometheus
+  - Metrics 를 수집하고 모니터링 및 알람에 사용되는 오픈 소스 애플리케이션
+  - 2016년 부터 CNCF 에서 관리되는 2번째 공식 프로젝트
+    + Level DB -> Time Series Database(TSDB)
+  - Pull 방식의 구조와 다양한 Metrics Exporter 제공
+  - 시계열 DB에 Metrics 저장 -> 조회 가능(Query)
+* Grafana
+  - 데이터 시각화, 모니터링 및 분석을 위한 오픈소스 애플리케이션
+  - 시계열 데이터를 시각화하기 위한 대시보드 제공
