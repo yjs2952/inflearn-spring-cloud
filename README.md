@@ -324,3 +324,22 @@
 * Grafana
   - 데이터 시각화, 모니터링 및 분석을 위한 오픈소스 애플리케이션
   - 시계열 데이터를 시각화하기 위한 대시보드 제공
+
+### 컨테이너 가상화
+* OS Virtualization 
+  - Host OS 위에 Guest OS 전체를 가상화
+  - VMWare, VirtualBox 
+  - 자유도가 높으나, 시스템에 부하가 많고 느려짐
+* Container Virtualization
+  - Host OS 가 가진 리소스를 적게 사용하며, 필요한 프로세스 실행
+  - 최소한의 라이브러리와 도구만 포함
+  - Container 의 생성 속도 빠름
+
+### Container Image
+* Container 실행에 필요한 설정값
+  - 상태값 X, Immutable
+* Image 를 가지고 실체화 -> Container
+
+### Dockerfile 
+* Docker Image 를 생성하기 위한 스크립트 파일
+* 자체 DDL(Domain-Specific-language) 언어 사용 -> 이미지 생성과정 기술
