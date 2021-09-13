@@ -343,3 +343,18 @@
 ### Dockerfile 
 * Docker Image 를 생성하기 위한 스크립트 파일
 * 자체 DDL(Domain-Specific-language) 언어 사용 -> 이미지 생성과정 기술
+
+### Docker 실행
+* docker run [OPTIONS] IMAGE[:TAG | @DIGEST] [COMMAND] [ARG...]  
+  
+  |옵션|설명|
+  |---|---|
+  |-d|detached mode 흔히 말하는 백그라운드 모드|
+  |-p|호스트와 컨테이너의 포트를 연결 (포워딩)|
+  |-v|호스트와 컨테이너의 디렉토리를 연결 (마운트)|
+  |-e|컨테이너 내에서 사용할 환경변수 설정|
+  |-name|컨테이너 이름 설정|
+  |-rm|프로세스 쫑료시 컨테이너 자동 제거|
+  |-it|-i 와 -t를 통시에 사용한 것으로 터미널 입력을 위한 옵션|
+  |-link|컨테이너 연결 (컨테이너:별칭)|
+ 
