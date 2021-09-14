@@ -345,8 +345,11 @@
 * 자체 DDL(Domain-Specific-language) 언어 사용 -> 이미지 생성과정 기술
 
 ### Docker 실행
-* docker run [OPTIONS] IMAGE[:TAG | @DIGEST] [COMMAND] [ARG...]  
-  
+* docker run [OPTIONS] IMAGE[:TAG | @DIGEST] [COMMAND] [ARG...]
+  - MariaDB 실행하기 
+    - docker run -d -p 13306:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=true --name mariadb mariadb:10.6
+    - docker exec -it mariadb /bin/bash
+
   |옵션|설명|
   |---|---|
   |-d|detached mode 흔히 말하는 백그라운드 모드|
@@ -358,3 +361,20 @@
   |-it|-i 와 -t를 통시에 사용한 것으로 터미널 입력을 위한 옵션|
   |-link|컨테이너 연결 (컨테이너:별칭)|
  
+### Docker Image 생성
+* Dockerfile 만들기
+  ``` Dockerfile
+    FROM openjdk:17-ea-11-jdk-slim   # 해당 이미지 기반으로 사용
+    VOLUME /tmp                      # 도커 가상 디렉토리
+    COPY target/userservice-1.0.jar UserService.jar  # 호스트 PC의 파일을 도커 가상 디렉토리에 UserService.jar 이름으로 복사
+    ENTRYPOINT ["java","-jar","UserService.jar"]     # 파일 실행 명령어 추가
+  ```
+* 도커파일로 이미지 빌드 (이미지 생성)
+  - docker build -t [생성할 이미지명]:[태그명] [Dockerfile의 위치]  
+    docker build -t yjs2952/user-service:1.0 . (.은 현재 디렉토리)
+* 도커 허브에 생성한 도커 이미지 업로드
+  - docker push [생성할 이미지명]:[태그명] 
+    docker push yjs2952/user-service:1.0
+* 도커 허브에서 도커 이미지 가져오기
+  - docker pull [생성할 이미지명]:[태그명]
+    docker pull user-service:1.0
